@@ -2,8 +2,8 @@ package Jira.steps;
 
 import io.qameta.allure.Step;
 
+import static Jira.pageElements.NavigationBar.btnNavigationBar;
 import static Jira.pageElements.PopupCreate.*;
-import static Jira.pageElements.NavigationBar.*;
 
 
 public class NavigationSteps {

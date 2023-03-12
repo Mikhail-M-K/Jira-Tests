@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class BoardPage {
     public static SelenideElement valueTaskAll = $x("//span[contains(text(),'Показаны результаты:')]/child::span[3]").as("Количество задач всего");
     public static SelenideElement btnChangeView = $x("//button[@id='layout-switcher-button']").as("Кнопка Изменить вид");
-    public static SelenideElement searchInput = $x("//input[@placeholder='Содержит текст']");
+    public static SelenideElement searchInput = $x("//input[@placeholder='Содержит текст']").as("Поле поиска задачи");
     public static SelenideElement btnSearch = $x("//button[contains(text(),'Поиск')]").as("Кнопка Поиск");
     public static SelenideElement header = $x("//h1[@id='summary-val']").as("Заголовок");
     public static SelenideElement statusText = $x("//strong[contains(text(),'Статус:')]/following-sibling::span").as("Вывод статуса");

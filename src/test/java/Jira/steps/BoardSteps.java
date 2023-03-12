@@ -1,8 +1,8 @@
 package Jira.steps;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Flaky;
 import io.qameta.allure.Step;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 
 import static Jira.pageElements.BoardPage.*;
@@ -16,6 +16,7 @@ public class BoardSteps {
         btnListView("Список").click();
     }
 
+    @Flaky
     public static void checkNumTaskAll(){
         String numTasks = valueTaskAll.getText();
         Assertions.assertEquals(numTasks, valueTaskAll.getText());
@@ -34,6 +35,7 @@ public class BoardSteps {
         sleep(2000);
     }
 
+    @Flaky
     @Step("Проверка теста: имя - {nameTest}, принадлежность к версии - {versionTest} ")
     public static void checkTest(String nameTest, String versionTest){
         Allure.addAttachment("Имя теста", header.getText());
@@ -61,6 +63,7 @@ public class BoardSteps {
         btnStatusBug("Выполнено").click();
     }
 
+    @Flaky
     @Step("Проверка созданного бага, по теме, описанию и окружении")
     public static void checkCreateBug(String theme, String description, String environment) {
         openMyBug();
@@ -69,10 +72,12 @@ public class BoardSteps {
         Assertions.assertEquals(infoEnvironment.getText(),environment);
     }
 
+    @Flaky
     @Step("Проверка статуса бага на {statusBug}")
     public static void checkStatusBag(String statusBug) {
         sleep(2000);
         Assertions.assertEquals(statusText.getText(), statusBug);
     }
+
 
 }
