@@ -21,7 +21,12 @@ public class BoardSteps {
     @Flaky
     public static void checkNumTaskAll() {
         String numTasks = valueTaskAll.getText();
-        Assertions.assertEquals(numTasks, valueTaskAll.getText());
+        try {
+            Assertions.assertEquals(numTasks, valueTaskAll.getText(), "Неверное количеством задач");
+        } catch (AssertionFailedError e) {
+            AllureHelper.createScreenshot("Скриншот с количеством задач");
+            throw new AssertionFailedError(e.getMessage());
+        }
         Allure.addAttachment("Всего задач заведено в Jira", valueTaskAll.getText());
     }
 

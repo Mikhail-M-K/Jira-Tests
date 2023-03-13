@@ -11,8 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static Jira.pageElements.BoardPage.btnStatusBar;
 import static Jira.steps.BoardSteps.*;
-import static Jira.steps.NavigationSteps.openAllTasks;
-import static Jira.steps.NavigationSteps.openMyBug;
+import static Jira.steps.NavigationSteps.*;
 
 @DisplayName("Тесты Jira (https://edujira.ifellow.ru)")
 public class RunTest extends WebHooks {
@@ -54,7 +53,7 @@ public class RunTest extends WebHooks {
         String theme = ConfProperties.getProperty("themeBug");
         String description = ConfProperties.getProperty("descriptionBug");
         String environment = ConfProperties.getProperty("environmentBug");
-        //createBugNavigation(theme, description, environment);
+        createBugNavigation(theme, description, environment);
         checkCreateBug(theme, description, environment);
     }
 
