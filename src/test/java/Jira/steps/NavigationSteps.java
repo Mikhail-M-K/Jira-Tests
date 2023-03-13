@@ -14,13 +14,13 @@ public class NavigationSteps {
         btnNavigationBar("Поиск задач").click();
     }
 
-    @Step("Переход к сообщенным багам")
+    @Step("Переход к сообщенным задачам")
     public static void openMyBug() {
         btnNavigationBar("Задачи").click();
         btnNavigationBar("Сообщенные мной").click();
     }
 
-    @Step("Создание бага с навигационной панели")
+    @Step("Создание задачи с навигационной панели")
     public static void createBugNavigation(String theme, String description, String environment) {
         btnNavigationBar("Создать").click();
         inputTheme.sendKeys(theme);

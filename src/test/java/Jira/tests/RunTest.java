@@ -2,10 +2,7 @@ package Jira.tests;
 
 import Jira.Utils.ConfProperties;
 import Jira.hooks.WebHooks;
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Step;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,8 +27,8 @@ public class RunTest extends WebHooks {
 
     @Epic(value = "Информация с Jira")
     @Feature(value = "Проверка теста с Jira")
+    @DisplayName("Проверка производит сравнение полученных данных задачи с сайта и входных данных")
     @Step("Проверка теста на принадлежность к версии")
-    @DisplayName("Проверка теста на принадлежность к версии")
     @Test
     @Description("Проверка теста на принадлежность к версии")
     public void checkVersionTest() {
@@ -43,12 +40,12 @@ public class RunTest extends WebHooks {
 
     }
 
-    @Epic(value = "Заведение и работа с багом в Jira")
-    @Feature(value = "Заведение бага в Jira")
-    @DisplayName("Заведение бага в Jira")
+    @Epic(value = "Заведение и работа с задачей в Jira")
+    @Feature(value = "Заведение задачи в Jira")
+    @DisplayName("Заведение задачи в системе Jira")
     @Test
-    @Description("Заведение бага в системе Jira")
-    @Step("Заведение бага в системе Jira")
+    @Description("Добавление на сайт новой задачи с описанием из входных параметров")
+    @Step("Заведение задачи в системе Jira")
     public void createBug() {
         String theme = ConfProperties.getProperty("themeBug");
         String description = ConfProperties.getProperty("descriptionBug");
@@ -57,9 +54,9 @@ public class RunTest extends WebHooks {
         checkCreateBug(theme, description, environment);
     }
 
-    @Epic(value = "Заведение и работа с багом в Jira")
-    @Feature(value = "Перевод и проверка бага в различные статусы")
-    @DisplayName("Перевод и проверка бага в различные статусы")
+    @Epic(value = "Заведение и работа с задачей в Jira")
+    @Feature(value = "Перевод и проверка задачи в различные статусы")
+    @DisplayName("Перевод и проверка задачи в различные статусы")
     @Test
     @Description("Перевод и проверка в различные статусы последней заведенной задачи в Jira")
     @Step("Перевод и проверка в различные статусы последней заведенной задачи в Jira")

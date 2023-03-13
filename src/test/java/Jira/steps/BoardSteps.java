@@ -91,7 +91,7 @@ public class BoardSteps {
     }
 
     @Flaky
-    @Step("Проверка статуса бага на {statusBug}")
+    @Step("Проверка статуса задачи на {statusBug}")
     public static void checkStatusBag(String statusBug) {
         sleep(2000);
         try {
