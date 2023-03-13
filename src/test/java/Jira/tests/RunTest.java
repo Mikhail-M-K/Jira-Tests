@@ -1,6 +1,6 @@
 package Jira.tests;
 
-import Jira.ConfProperties;
+import Jira.Utils.ConfProperties;
 import Jira.hooks.WebHooks;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -11,7 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import static Jira.pageElements.BoardPage.btnStatusBar;
 import static Jira.steps.BoardSteps.*;
-import static Jira.steps.NavigationSteps.*;
+import static Jira.steps.NavigationSteps.openAllTasks;
+import static Jira.steps.NavigationSteps.openMyBug;
 
 @DisplayName("Тесты Jira (https://edujira.ifellow.ru)")
 public class RunTest extends WebHooks {
@@ -21,7 +22,7 @@ public class RunTest extends WebHooks {
     @DisplayName("Получение количества заведенных задач в Jira")
     @Test
     @Description("Получение количества заведенных задач в Jira")
-    public void transitionalToTheTasks(){
+    public void transitionalToTheTasks() {
         openAllTasks();
         changeViewList();
         checkNumTaskAll();
@@ -34,7 +35,7 @@ public class RunTest extends WebHooks {
     @DisplayName("Проверка теста на принадлежность к версии")
     @Test
     @Description("Проверка теста на принадлежность к версии")
-    public void checkVersionTest(){
+    public void checkVersionTest() {
         String nameTest = ConfProperties.getProperty("nameTest");
         String versionTest = ConfProperties.getProperty("versionTest");
         openAllTasks();
@@ -49,11 +50,11 @@ public class RunTest extends WebHooks {
     @Test
     @Description("Заведение бага в системе Jira")
     @Step("Заведение бага в системе Jira")
-    public void createBug(){
+    public void createBug() {
         String theme = ConfProperties.getProperty("themeBug");
         String description = ConfProperties.getProperty("descriptionBug");
         String environment = ConfProperties.getProperty("environmentBug");
-        createBugNavigation(theme, description, environment);
+        //createBugNavigation(theme, description, environment);
         checkCreateBug(theme, description, environment);
     }
 
@@ -63,7 +64,7 @@ public class RunTest extends WebHooks {
     @Test
     @Description("Перевод и проверка в различные статусы последней заведенной задачи в Jira")
     @Step("Перевод и проверка в различные статусы последней заведенной задачи в Jira")
-    public void statusChange(){
+    public void statusChange() {
         openMyBug();
         checkStatusBag("СДЕЛАТЬ");
         btnStatusBar("В работе").click();

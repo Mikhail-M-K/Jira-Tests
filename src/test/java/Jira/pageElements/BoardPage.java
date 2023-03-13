@@ -19,11 +19,11 @@ public class BoardPage {
         return $x("//div[@id='layout-switcher-options']//a[contains(text(),'" + view + "')]").as("Вид списка: " + view);
     }
 
-    public static SelenideElement btnStatusBug (String status) {
+    public static SelenideElement btnStatusBug(String status) {
         return $x("//span[contains(text(),'" + status + "')]/parent::a").as("Статус: " + status);
     }
 
-    public static SelenideElement btnStatusBar (String status) {
+    public static SelenideElement btnStatusBar(String status) {
         return $x("//span[contains(text(),'" + status + "')]").as("Статус: " + status);
     }
 }

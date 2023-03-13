@@ -8,16 +8,21 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
-import static Jira.ConfProperties.getProperty;
+import static Jira.Utils.ConfProperties.getProperty;
 import static Jira.pageElements.LoginPage.btnEnter;
 import static Jira.steps.AuthenticationSteps.authentication;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
+public class WebHooks {
 
-
-public class WebHooks{
-
+    @BeforeAll
+    public static void setupAllureReports() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true)
+        );
+    }
 
     @BeforeEach
     @Step("Аутентификация")
@@ -26,14 +31,6 @@ public class WebHooks{
         open(getProperty("login-page"));
         authentication(getProperty("login"), getProperty("password"));
         btnEnter.click();
-    }
-
-    @BeforeAll
-    public static void setupAllureReports() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(true)
-                .savePageSource(false)
-        );
     }
 
     @AfterEach

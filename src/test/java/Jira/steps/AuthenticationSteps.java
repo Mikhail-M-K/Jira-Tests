@@ -7,7 +7,7 @@ import static Jira.pageElements.LoginPage.passwordInput;
 
 public class AuthenticationSteps {
     @Step("Ввод логина и пароля")
-    public static void authentication(String login, String password){
+    public static void authentication(String login, String password) {
         loginInput.sendKeys(login);
         passwordInput.sendKeys(password);
     }
